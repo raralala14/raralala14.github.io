@@ -13,11 +13,11 @@ This page is hosted at ➡️ (https://raralala14.github.io).
 <details><summary>CLICK ME (I swear we won't steal your info 😉) </summary>
 <p>
 
-#### We can hide anything, even code!
+We can hide anything, even code!
 
-```ruby
+
    "Happy to have my own page"
-```
+
 
 </p>
 </details>
