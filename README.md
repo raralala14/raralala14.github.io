@@ -10,13 +10,13 @@ a similar one for all of my coding needs! 😁
 
 This page is hosted at ➡️ (https://raralala14.github.io).
 
-<details><summary>CLICK ME</summary>
+<details><summary>CLICK ME (I swear we won't steal your info 😉) </summary>
 <p>
 
 #### We can hide anything, even code!
 
 ```ruby
-   puts "Hello World"
+   "Happy to have my own page"
 ```
 
 </p>
