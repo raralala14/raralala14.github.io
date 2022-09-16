@@ -3,8 +3,8 @@
 Hello folks! Thanks to CS-HU 250, I was taught how to 
 create my own Github repository (how cool) and from
 now on into my career I will be using this page or
-a similar one for all of my coding needs!
-
+a similar one for all of my coding needs! 
+:EMOJICODE: 
 This page is hosted at (https://raralala14.github.io).
 
 This site was built using [GitHub Pages](https://pages.github.com/).
