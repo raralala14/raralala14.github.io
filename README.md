@@ -2,7 +2,7 @@
 This site was built using [GitHub Pages](https://pages.github.com/).
 
 
-## My Github page!
+## 📍 My Github page!
 Hello folks! Thanks to CS-HU 250, I was taught how to 
 create my own Github repository (how cool) and from
 now on into my career I will be using this page or
