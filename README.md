@@ -6,3 +6,5 @@ now on into my career I will be using this page or
 a similar one for all of my coding needs!
 
 This page is hosted by raralala14/github/io.
+
+This site was built using [GitHub Pages](https://pages.github.com/).
