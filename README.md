@@ -16,7 +16,6 @@ This page is hosted at ➡️ (https://raralala14.github.io).
 We can hide anything, even code!
 
 "Happy to have my own page"
-![alt text]https://www.boredpanda.com/funny-dog-bios/?utm_source=google&utm_medium=organic&utm_campaign=organic
 
 
 </p>
