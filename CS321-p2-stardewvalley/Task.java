@@ -5,6 +5,7 @@
  */
 
 	// TODO PASTE IN JAVADOCS
+	// if priorities equal then go to hour created
 
 public class Task implements TaskInterface, Comparable<Object> {
 
@@ -12,6 +13,12 @@ public class Task implements TaskInterface, Comparable<Object> {
 	int waitingTime;
 	int hourCreated;
 	String description;
+	Integer number;
+	
+	public Task() {
+		
+		
+	}
 
 	/**
 	 * returns the priority level
@@ -68,10 +75,36 @@ public class Task implements TaskInterface, Comparable<Object> {
 
 	@Override
 	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
+		
+		// compares the priorities of this task
+		// and the other task (Object o)
+		// if tied, compare hourCreated (who has smallest #)
+		
+		System.out.println(o.toString());
+		int leftChild = 1;
+		int rightChild = 3;
+		
+		if (this.priorityLevel < rightChild)
+			return -1;
+		
+		if (this.priorityLevel > leftChild)
+			return 1;
+		
+		if (rightChild == leftChild)
+			return 0;
+		
 		return 0;
+		
+		
 	}
-
+	public void setHourCreated(int hour) {
+		hourCreated = hour;
+		
+	}
+	public int getHourCreated() {
+		return hourCreated;
+		
+	}
 	public String getTaskDescription() {
 		
 		return description;

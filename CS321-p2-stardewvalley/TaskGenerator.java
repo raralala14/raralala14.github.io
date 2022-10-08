@@ -1,25 +1,33 @@
+import java.util.Random;
 
 public class TaskGenerator implements TaskGeneratorInterface {
 	
 	
 	int currentEnergyStorage = 0;
-	int probability;
+	double probability;
 	int randomSeed;
-	
+	double probabilityOne;
+    private  Random rand;
+
 	public TaskGenerator (double taskGenerationProbability) {
-	
+		probability = taskGenerationProbability;
+		
 	}
 	
 	
 	public TaskGenerator (double taskGenerationProbability, long seed) {
-		
+		// use probability and seed to determine if need to call getNewTask()
 	}
 	
 	
 	@Override
 	public Task getNewTask(int hourCreated, TaskInterface.TaskType taskType, String taskDescription) {
-		// TODO Auto-generated method stub
-		return null;
+		Task task = new Task();
+		task.setPriority(0);
+		task.setHourCreated(hourCreated);
+		task.setTaskDescription("this is a task description ");
+		System.out.println("getting task description " + task.getTaskDescription());
+		return task;
 	}
 
 	@Override
@@ -48,8 +56,17 @@ public class TaskGenerator implements TaskGeneratorInterface {
 
 	@Override
 	public boolean generateTask() {
-		// TODO Auto-generated method stub
-		return false;
+		// do we generate a task or not???
+		
+		rand = new Random();
+		probabilityOne = rand.nextDouble();
+		if (probabilityOne > probability) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
 	}
 
 	@Override
