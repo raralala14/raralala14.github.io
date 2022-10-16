@@ -4,26 +4,32 @@
  *
  */
 
-	// TODO PASTE IN JAVADOCS
-	// if priorities equal then go to hour created
+// TODO PASTE IN JAVADOCS
+// if priorities equal then go to hour created
 
-public class Task implements TaskInterface, Comparable<Object> {
-
-	int priorityLevel;
-	int waitingTime;
-	int hourCreated;
-	String description;
-	Integer number;
+public class Task implements TaskInterface, Comparable<Task> {
 	
-	public Task() {
-		
-		
+	private int priorityLevel;
+	private int waitingTime;
+	private int hourCreated;
+	private String description;
+	private TaskInterface.TaskType theTaskType;
+	
+//	public Task() {
+//		
+//	}
+
+	public Task(TaskInterface.TaskType theTaskType, int priorityLevel, int hourCreated2, String taskDescription) {
+		setPriority(priorityLevel);
+		setHourCreated(hourCreated2);
+		setTaskDescription(taskDescription);
+		this.theTaskType = theTaskType;
 	}
 
 	/**
 	 * returns the priority level
 	 */
-	
+
 	public int getPriority() {
 
 		return priorityLevel;
@@ -45,9 +51,9 @@ public class Task implements TaskInterface, Comparable<Object> {
 	 */
 	@Override
 	public TaskInterface.TaskType getTaskType() {
-
-		return null;
-
+		
+		return getTaskType();
+		
 	}
 
 	/**
@@ -66,6 +72,7 @@ public class Task implements TaskInterface, Comparable<Object> {
 		waitingTime = 0;
 
 	}
+
 	@Override
 	public int getWaitingTime() {
 
@@ -74,46 +81,45 @@ public class Task implements TaskInterface, Comparable<Object> {
 	}
 
 	@Override
-	public int compareTo(Object o) {
-		
+	public int compareTo(Task task) {
+
 		// compares the priorities of this task
 		// and the other task (Object o)
 		// if tied, compare hourCreated (who has smallest #)
 		
-		System.out.println(o.toString());
-		int leftChild = 1;
-		int rightChild = 3;
-		
-		if (this.priorityLevel < rightChild)
+		if (this.getPriority() < task.getPriority()) {
 			return -1;
-		
-		if (this.priorityLevel > leftChild)
+		} else if (this.getPriority() > task.getPriority()) {
 			return 1;
-		
-		if (rightChild == leftChild)
+		} else if (this.hourCreated < task.hourCreated) {
+			return 1;
+		} else if (this.hourCreated > task.hourCreated) {
+			return -1;
+		} else {
 			return 0;
-		
-		return 0;
-		
-		
+		}
+
 	}
+
 	public void setHourCreated(int hour) {
 		hourCreated = hour;
-		
+
 	}
+
 	public int getHourCreated() {
 		return hourCreated;
-		
+
 	}
+
 	public String getTaskDescription() {
-		
+
 		return description;
 	}
-	
+
 	public void setTaskDescription(String taskDescription) {
-		
+
 		description = taskDescription;
-		
+
 	}
 
 }
