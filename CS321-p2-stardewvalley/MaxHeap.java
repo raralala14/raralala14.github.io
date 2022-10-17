@@ -76,11 +76,9 @@ public class MaxHeap {
 	public Task max() {
 
 		if (isEmpty()) {
-			System.out.println("heap is empty");
 			return null;
 		} else {
-			Task maxTask = heap[1];
-			return maxTask;
+			return heap[1];
 		}
 
 	}
@@ -104,8 +102,7 @@ public class MaxHeap {
 	 * @param task
 	 * @throws HeapException
 	 */
-	public void insert(Task taskToInsert) throws HeapException {
-//		
+	public void insert(Task taskToInsert) throws HeapException {	
 		heapSize++;
 		if (heapSize == DEFAULT_SIZE) {
 			doubleTheHeap();

@@ -25,6 +25,7 @@ public class TaskGenerator implements TaskGeneratorInterface {
 	@Override
 	public Task getNewTask(int hourCreated, TaskInterface.TaskType taskType, String taskDescription) {
 		 
+		System.out.println("Called getNewTask()...");
 		if (seeded == true) {
              randomSeed = randomSeed << 2; //allows for different lucks and unfortunate probabilities
              rand = new Random(randomSeed);
@@ -32,9 +33,14 @@ public class TaskGenerator implements TaskGeneratorInterface {
              rand = new Random();
          }
         double createATask = rand.nextDouble();
+        
+        System.out.println("createATask double is:" + createATask);
+        System.out.println("probability = " + probability);
         if (createATask > probability) {
+        	System.out.println("Yep! Creating a new task "+ taskType);
         	Task newTask = new Task(taskType, 0, hourCreated, taskDescription);
-    		return newTask;
+    		System.out.println("The new task has been created as Task " + newTask);
+        	return newTask;
         }
 		return null;
 
@@ -71,10 +77,10 @@ public class TaskGenerator implements TaskGeneratorInterface {
 		rand = new Random();
 		probabilityOne = rand.nextDouble();
 		if (probabilityOne < probability) {
-//System.out.println("We are generating a task!");
+System.out.println("We are generating a task!");
 			return true;
 		} else {
-//System.out.println("We are NOT generating a task!");			
+System.out.println("We are NOT generating a task!");			
 			return false;
 		}
 
@@ -120,6 +126,8 @@ public class TaskGenerator implements TaskGeneratorInterface {
 	 */
 	@Override
 	public String toString(Task task, Task.TaskType taskType) {
+		
+		System.out.println("TaskGenerator.toString:task = " + task);
 		
 		if (taskType == Task.TaskType.MINING) {
 			return "     Mining " + task.getTaskDescription() + " at " + currentEnergyStorage

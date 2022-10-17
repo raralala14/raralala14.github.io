@@ -17,6 +17,7 @@ public class Task implements TaskInterface, Comparable<Task> {
 		setTaskDescription(taskDescription);
 		this.theTaskType = theTaskType;
 	}
+	
 	public String toString() {
 		return theTaskType + " " + description + " " + "at Hour " + hourCreated + ":00";
 		
