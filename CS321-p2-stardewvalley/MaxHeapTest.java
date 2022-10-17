@@ -22,7 +22,7 @@ public class MaxHeapTest {
 		maxHeapTest.isNotEmptyTest();
 //		maxHeapTest.increaseKeyTest(task1, 3);
 		maxHeapTest.extractMaxTest();
-		//maxHeapTest.testTheHeap(task1);
+		maxHeapTest.testTheHeap(task1);
 		
 		
 	}
@@ -41,7 +41,7 @@ public class MaxHeapTest {
 	private void testTheHeap(Task task) throws HeapException {
 
 		
-		Object testArray[] = { task };
+		//Object testArray[] = { task };
 		System.out.println("heap extractMax is " + heap.extractMax());
 	}
 

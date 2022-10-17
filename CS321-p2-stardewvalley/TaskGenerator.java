@@ -37,12 +37,10 @@ public class TaskGenerator implements TaskGeneratorInterface {
         System.out.println("createATask double is:" + createATask);
         System.out.println("probability = " + probability);
         if (createATask > probability) {
-        	System.out.println("Yep! Creating a new task "+ taskType);
         	Task newTask = new Task(taskType, 0, hourCreated, taskDescription);
-    		System.out.println("The new task has been created as Task " + newTask);
         	return newTask;
         }
-		return null;
+		return new Task(hourCreated, taskType, taskDescription);
 
 		
 
@@ -97,7 +95,7 @@ System.out.println("We are NOT generating a task!");
      * @returns  0, 1 or 2 depending on the unluckiness
      */
 	public int getUnlucky(Task task, double unluckyProbability) {
-		//System.out.println("running getUnlucky");
+		
 		Task.TaskType taskType = task.getTaskType();
 		if (unluckyProbability <= taskType.getPassingOutProbability()) {
 			if ((unluckyProbability <= taskType.getDyingProbabilityProbability())

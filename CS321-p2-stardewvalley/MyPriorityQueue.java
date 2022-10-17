@@ -11,7 +11,7 @@ public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface  
 	public void enqueue(Object task) {
 
 		try {
-			insert((Task) task);
+			super.insert((Task) task);
 
 		} catch (HeapException e) {
 			e.printStackTrace();
@@ -29,14 +29,11 @@ public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface  
 		public Task dequeue() {
 
 			if (!isEmpty()) {
-//				System.out.println("We are returning max");
-//				System.out.println("max() before extractMax(): " + max());
-				extractMax();
-//				System.out.println("max() AFTER extractMax(): " + max());
-				return max();
+			
+				return super.extractMax();
 
 			} else {
-//				System.out.println("No queue, so returning null");
+
 				return null;
 			}
 
