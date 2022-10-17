@@ -68,13 +68,13 @@ public class TaskGenerator implements TaskGeneratorInterface {
 
 	@Override
 	public boolean generateTask() {
-
-
 		rand = new Random();
 		probabilityOne = rand.nextDouble();
-		if (probabilityOne > probability) {
+		if (probabilityOne < probability) {
+//System.out.println("We are generating a task!");
 			return true;
 		} else {
+//System.out.println("We are NOT generating a task!");			
 			return false;
 		}
 
@@ -91,7 +91,7 @@ public class TaskGenerator implements TaskGeneratorInterface {
      * @returns  0, 1 or 2 depending on the unluckiness
      */
 	public int getUnlucky(Task task, double unluckyProbability) {
-		System.out.println("running getUnlucky");
+		//System.out.println("running getUnlucky");
 		Task.TaskType taskType = task.getTaskType();
 		if (unluckyProbability <= taskType.getPassingOutProbability()) {
 			if ((unluckyProbability <= taskType.getDyingProbabilityProbability())
@@ -120,9 +120,7 @@ public class TaskGenerator implements TaskGeneratorInterface {
 	 */
 	@Override
 	public String toString(Task task, Task.TaskType taskType) {
-
-		System.out.println("rachel");
-
+		
 		if (taskType == Task.TaskType.MINING) {
 			return "     Mining " + task.getTaskDescription() + " at " + currentEnergyStorage
 					+ " energy points (Priority:" + task.getPriority() + ")";

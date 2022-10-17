@@ -1,23 +1,15 @@
-
 /**
+ * 
  * @author rachellawrence
  *
  */
-
-// TODO PASTE IN JAVADOCS
-// if priorities equal then go to hour created
-
 public class Task implements TaskInterface, Comparable<Task> {
-	
+
 	private int priorityLevel;
 	private int waitingTime;
 	private int hourCreated;
 	private String description;
 	private TaskInterface.TaskType theTaskType;
-	
-//	public Task() {
-//		
-//	}
 
 	public Task(TaskInterface.TaskType theTaskType, int priorityLevel, int hourCreated2, String taskDescription) {
 		setPriority(priorityLevel);
@@ -25,7 +17,10 @@ public class Task implements TaskInterface, Comparable<Task> {
 		setTaskDescription(taskDescription);
 		this.theTaskType = theTaskType;
 	}
-
+	public String toString() {
+		return theTaskType + " " + description + " " + "at Hour " + hourCreated + ":00";
+		
+	}
 	/**
 	 * returns the priority level
 	 */
@@ -47,17 +42,17 @@ public class Task implements TaskInterface, Comparable<Task> {
 	}
 
 	/**
-	 * 
+	 * return The tasks task type
 	 */
 	@Override
 	public TaskInterface.TaskType getTaskType() {
-		
-		return getTaskType();
-		
+
+		return theTaskType;
+
 	}
 
 	/**
-	 * 
+	 * Increment the waiting time one the task
 	 */
 	@Override
 	public void incrementWaitingTime() {
@@ -66,6 +61,9 @@ public class Task implements TaskInterface, Comparable<Task> {
 
 	}
 
+	/**
+	 * Set waiting time to zero
+	 */
 	@Override
 	public void resetWaitingTime() {
 
@@ -73,6 +71,9 @@ public class Task implements TaskInterface, Comparable<Task> {
 
 	}
 
+	/**
+	 * Returns the current waiting time on the task
+	 */
 	@Override
 	public int getWaitingTime() {
 
@@ -81,12 +82,15 @@ public class Task implements TaskInterface, Comparable<Task> {
 	}
 
 	@Override
+	/**
+	 * compares the priorities of this task and the other task (Object o) if tied,
+	 * compare hourCreated (who has smallest #)
+	 * 
+	 * @param task The task to compare this task to
+	 */
 	public int compareTo(Task task) {
 
-		// compares the priorities of this task
-		// and the other task (Object o)
-		// if tied, compare hourCreated (who has smallest #)
-		
+//		System.out.println("Task is " + task);
 		if (this.getPriority() < task.getPriority()) {
 			return -1;
 		} else if (this.getPriority() > task.getPriority()) {
@@ -101,21 +105,39 @@ public class Task implements TaskInterface, Comparable<Task> {
 
 	}
 
+	/**
+	 * Set the hour for the task
+	 * 
+	 * @param hour
+	 */
 	public void setHourCreated(int hour) {
 		hourCreated = hour;
 
 	}
 
+	/**
+	 * 
+	 * @return hourCreated The hour created
+	 */
 	public int getHourCreated() {
 		return hourCreated;
 
 	}
 
+	/**
+	 * 
+	 * @return description The description of the task
+	 */
 	public String getTaskDescription() {
 
 		return description;
 	}
 
+	/**
+	 * Set the description for the current task
+	 * 
+	 * @param taskDescription
+	 */
 	public void setTaskDescription(String taskDescription) {
 
 		description = taskDescription;

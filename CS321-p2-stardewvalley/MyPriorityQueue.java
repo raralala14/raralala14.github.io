@@ -9,13 +9,14 @@ public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface  
      * @param task - Task to enqueue
      */
 	public void enqueue(Object task) {
+
 		try {
 			insert((Task) task);
+
 		} catch (HeapException e) {
 			e.printStackTrace();
 		}
 
-		
 	}
 
 	@Override
@@ -42,9 +43,9 @@ public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface  
      * @return true or false - depending on if the Heap is empty
      */
     public boolean isEmpty() {
-		if (heap.length < 1) {
+    	
+    	if (heapSize == 0) {
 			return true;
-	
 		}
 		return false;
 	}
