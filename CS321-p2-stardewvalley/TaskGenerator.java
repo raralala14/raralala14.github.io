@@ -5,13 +5,11 @@ public class TaskGenerator implements TaskGeneratorInterface {
 	int currentEnergyStorage = 200;//declare, not initial to 0
 	double probability;
 	long randomSeed;//not needed
-	double probabilityOne;//not needed
 	private Random rand;
-	boolean  seeded = false;//not needed
 
 	public TaskGenerator(double taskGenerationProbability) {
 		probability = taskGenerationProbability;
-		//use resetCurrentEnergyStorage()
+		resetCurrentEnergyStorage();
 		rand = new Random();
 
 	}
@@ -19,7 +17,7 @@ public class TaskGenerator implements TaskGeneratorInterface {
 	public TaskGenerator(double taskGenerationProbability, long seed) {
 		// use probability and seed to determine if need to call getNewTask()
 		probability = taskGenerationProbability;
-		//use resetCurrentEnergyStorage()
+		resetCurrentEnergyStorage();
 		randomSeed = seed;
 		rand = new Random(seed);
 		
@@ -28,19 +26,7 @@ public class TaskGenerator implements TaskGeneratorInterface {
 
 	@Override
 	public Task getNewTask(int hourCreated, TaskInterface.TaskType taskType, String taskDescription) {
-		 
-//		if (seeded == true) {
-//             randomSeed = randomSeed << 2; //allows for different lucks and unfortunate probabilities
-//             rand = new Random(randomSeed);
-//         } else {
-//             rand = new Random();
-//         }
-//        double createATask = rand.nextDouble();
-//        
-//        if (createATask > probability) {
-//        	Task newTask = new Task(taskType, 0, hourCreated, taskDescription);
-//        	return newTask;
-//        }
+		
 		return new Task(hourCreated, taskType, taskDescription);
 
 		

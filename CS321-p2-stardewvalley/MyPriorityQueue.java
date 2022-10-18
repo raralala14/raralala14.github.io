@@ -2,6 +2,7 @@
 public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface  {
 
 	int waitingTime;
+	int priorityLevel;
 	/**
      * Adds a task to the rear of the list.
      * via MaxHeap insert()
@@ -62,6 +63,7 @@ public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface  
     
 	@Override
 	 /**
+	  * 
      * Increase the priorities for a given task in the queue if it has waited enough 
      * time but not to exceed its maximum priority.
      *
@@ -69,12 +71,19 @@ public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface  
      * @param maxPriority  the maximum priority value the task can have
      */
 	public void update(int timeToIncrementPriority, int maxPriority) {
-		
-		waitingTime++;
-		if (waitingTime >= timeToIncrementPriority) {
-			waitingTime = 0;
-			if (super.heapSize < maxPriority);
+	
+		int i;
+		for (i = 1; i <= super.heapSize; i++) {
+			Task updatePriority = super.heap[i];
+			updatePriority.incrementWaitingTime();
+			if (updatePriority.getWaitingTime() >= timeToIncrementPriority) {
+				updatePriority.resetWaitingTime();
+				if (updatePriority.getPriority() < maxPriority);
+					updatePriority.setPriority(updatePriority.getPriority() + 1);
+					super.heapifyUp(i);
+			}
 		}
+		
 		
 	}
 

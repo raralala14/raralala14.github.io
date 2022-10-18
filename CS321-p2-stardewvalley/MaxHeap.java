@@ -26,7 +26,7 @@ public class MaxHeap {
 	 * @return integer left child
 	 */
 	private int left(int i) {
-		return 2 * i + 1;
+		return (2 * i);
 	}
 
 	/**
@@ -35,7 +35,7 @@ public class MaxHeap {
 	 * @return integer right child
 	 */
 	private int right(int i) {
-		return 2 * i + 2;
+		return (2 * i) + 1;
 	}
 
 	/**
@@ -44,8 +44,7 @@ public class MaxHeap {
 	 * @return integer parent
 	 */
 	private int parent(int i) {
-//		return ((i - 1) / 2);
-	return (int) Math.floor(i / 2);
+		return (int) Math.floor(i / 2);
 	}
 	
 
@@ -59,10 +58,10 @@ public class MaxHeap {
 		int r = right(index);
 		int largest = index;
 
-		if ((l < heapSize) && (heap[l].compareTo(heap[index]) > 0)) {
+		if ((l <= heapSize) && (heap[l].compareTo(heap[index]) > 0)) {
 			largest = l;
 		}
-		if ((r < heapSize) && (heap[r].compareTo(heap[largest]) > 0)) {
+		if ((r <= heapSize) && (heap[r].compareTo(heap[largest]) > 0)) {
 			largest = r;
 		}
 		if (largest != index) {
@@ -119,7 +118,10 @@ public class MaxHeap {
 
 	}
 
-	private void heapifyUp(int index) {
+	public void heapifyUp(int index) {
+		if (heapSize == 1) {
+			return;
+		}
 		if (index <= heapSize && index > 1)
 			if (heap[parent(index)].compareTo(heap[index]) == -1) {
 				Task tmp = heap[parent(index)];
