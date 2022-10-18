@@ -2,22 +2,26 @@ import java.util.Random;
 
 public class TaskGenerator implements TaskGeneratorInterface {
 
-	int currentEnergyStorage = 0;
+	int currentEnergyStorage = 200;//declare, not initial to 0
 	double probability;
-	long randomSeed;
-	double probabilityOne;
+	long randomSeed;//not needed
+	double probabilityOne;//not needed
 	private Random rand;
-	boolean  seeded = false;
+	boolean  seeded = false;//not needed
 
 	public TaskGenerator(double taskGenerationProbability) {
 		probability = taskGenerationProbability;
+		//use resetCurrentEnergyStorage()
+		rand = new Random();
 
 	}
 
 	public TaskGenerator(double taskGenerationProbability, long seed) {
 		// use probability and seed to determine if need to call getNewTask()
 		probability = taskGenerationProbability;
+		//use resetCurrentEnergyStorage()
 		randomSeed = seed;
+		rand = new Random(seed);
 		
 		
 	}
@@ -25,21 +29,18 @@ public class TaskGenerator implements TaskGeneratorInterface {
 	@Override
 	public Task getNewTask(int hourCreated, TaskInterface.TaskType taskType, String taskDescription) {
 		 
-		System.out.println("Called getNewTask()...");
-		if (seeded == true) {
-             randomSeed = randomSeed << 2; //allows for different lucks and unfortunate probabilities
-             rand = new Random(randomSeed);
-         } else {
-             rand = new Random();
-         }
-        double createATask = rand.nextDouble();
-        
-        System.out.println("createATask double is:" + createATask);
-        System.out.println("probability = " + probability);
-        if (createATask > probability) {
-        	Task newTask = new Task(taskType, 0, hourCreated, taskDescription);
-        	return newTask;
-        }
+//		if (seeded == true) {
+//             randomSeed = randomSeed << 2; //allows for different lucks and unfortunate probabilities
+//             rand = new Random(randomSeed);
+//         } else {
+//             rand = new Random();
+//         }
+//        double createATask = rand.nextDouble();
+//        
+//        if (createATask > probability) {
+//        	Task newTask = new Task(taskType, 0, hourCreated, taskDescription);
+//        	return newTask;
+//        }
 		return new Task(hourCreated, taskType, taskDescription);
 
 		
@@ -54,7 +55,7 @@ public class TaskGenerator implements TaskGeneratorInterface {
 
 	@Override
 	public void resetCurrentEnergyStorage() {
-		currentEnergyStorage = 0;
+		currentEnergyStorage = 200;
 
 	}
 
@@ -72,16 +73,8 @@ public class TaskGenerator implements TaskGeneratorInterface {
 
 	@Override
 	public boolean generateTask() {
-		rand = new Random();
-		probabilityOne = rand.nextDouble();
-		if (probabilityOne < probability) {
-System.out.println("We are generating a task!");
-			return true;
-		} else {
-System.out.println("We are NOT generating a task!");			
-			return false;
-		}
-
+		
+		return rand.nextDouble() < probability;
 	}
 
 	@Override
@@ -125,7 +118,6 @@ System.out.println("We are NOT generating a task!");
 	@Override
 	public String toString(Task task, Task.TaskType taskType) {
 		
-		System.out.println("TaskGenerator.toString:task = " + task);
 		
 		if (taskType == Task.TaskType.MINING) {
 			return "     Mining " + task.getTaskDescription() + " at " + currentEnergyStorage

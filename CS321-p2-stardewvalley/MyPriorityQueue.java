@@ -1,13 +1,21 @@
 
 public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface  {
 
-	@Override
+	int waitingTime;
 	/**
      * Adds a task to the rear of the list.
      * via MaxHeap insert()
      *
      * @param task - Task to enqueue
      */
+	
+	public MyPriorityQueue () {
+		super();
+	}
+//	public MyPriorityQueue (Task [] queue) {
+//		super(queue);
+//	}
+
 	public void enqueue(Object task) {
 
 		try {
@@ -62,9 +70,12 @@ public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface  
      */
 	public void update(int timeToIncrementPriority, int maxPriority) {
 		
-		// update each task's priority in heap array if 
-		// task's time created is longer than timeToInc.Prio.
-		// and new priority !> maxPriority
+		waitingTime++;
+		if (waitingTime >= timeToIncrementPriority) {
+			waitingTime = 0;
+			if (super.heapSize < maxPriority);
+		}
+		
 	}
 
 	

@@ -76,7 +76,7 @@ public class MaxHeapTest {
 	public void increaseKeyTest(Task x, int index) throws HeapException {
 		// A, x, k
 		// if k > x.key
-		heap.increasePriorityKey(x, index);
+//		heap.increasePriorityKey(x, index);
 		return;
 	}
 

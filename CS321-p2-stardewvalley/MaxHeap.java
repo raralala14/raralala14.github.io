@@ -14,6 +14,11 @@ public class MaxHeap {
 		heap = new Task[DEFAULT_SIZE];
 		heapSize = 0;
 	}
+//	public MaxHeap(Task [] queue) {
+//		heap = queue;
+//		heapSize = queue.length - 1;
+//		
+//	}
 
 	/**
 	 * 
@@ -39,8 +44,10 @@ public class MaxHeap {
 	 * @return integer parent
 	 */
 	private int parent(int i) {
-		return ((i - 1) / 2);
+//		return ((i - 1) / 2);
+	return (int) Math.floor(i / 2);
 	}
+	
 
 	/**
 	 * Sort the heap
@@ -101,17 +108,25 @@ public class MaxHeap {
 	 * @param task
 	 * @throws HeapException
 	 */
-	public void insert(Task taskToInsert) throws HeapException {	
+	public void insert(Task taskToInsert) throws HeapException {
 		heapSize++;
-		if (heapSize == DEFAULT_SIZE) {
+		if (heapSize == heap.length - 1) {
 			doubleTheHeap();
 		}
-
-		int taskPriority = taskToInsert.getPriority();
 		heap[heapSize] = taskToInsert;
 
-		increasePriorityKey(taskToInsert, taskPriority);
+		heapifyUp(heapSize);
 
+	}
+
+	private void heapifyUp(int index) {
+		if (index <= heapSize && index > 1)
+			if (heap[parent(index)].compareTo(heap[index]) == -1) {
+				Task tmp = heap[parent(index)];
+				heap[parent(index)] = heap[index];
+				heap[index] = tmp;
+				heapifyUp(parent(index));
+			}
 	}
 
 	/**
@@ -122,46 +137,46 @@ public class MaxHeap {
 		heap = Arrays.copyOf(heap, heap.length * 2);
 	}
 
-	/**
-	 * Increases the value of x.priorityLevel with newPriority Assumed to be =>
-	 * x.priorityLevel
-	 * 
-	 * @param x           The task to increase priority
-	 * @param newPriority The new priority for the task
-	 * @throws HeapException
-	 */
-	public void increasePriorityKey(Task x, int newPriority) throws HeapException {
-
-		int i = 1;
-		int index = 1;
-		while (i < heapSize) {
-			if (heap[i] == x) {
-				index = i;
-				break;
-			}
-			i++;
-		}
-
-		while (index > 1 && heap[this.parent(index)].getPriority() < heap[index].getPriority()) {
-			Task tmpTask = heap[index];
-			Task tmpParentTask = heap[this.parent(index)];
-			heap[index] = tmpParentTask;
-			heap[this.parent(index)] = tmpTask;
-		}
-
-		index = this.parent(index);
-
-		if (index > 1) {
-			if (x.compareTo(heap[this.parent(index)]) < 0) {
-				throw new HeapException("new key is smaller so not valid ");
-			} else {
-				x.setPriority(newPriority);
-
-			}
-
-		}
-
-	}
+//	/**
+//	 * Increases the value of x.priorityLevel with newPriority Assumed to be =>
+//	 * x.priorityLevel
+//	 * 
+//	 * @param x           The task to increase priority
+//	 * @param newPriority The new priority for the task
+//	 * @throws HeapException
+//	 */
+//	public void increasePriorityKey(Task x, int newPriority) throws HeapException {
+//		
+//		int i = 1;
+//		int index = 1;
+//		while (i < heapSize) {
+//			if (heap[i] == x) {
+//				index = i;
+//				break;
+//			}
+//			i++;
+//		}
+//
+//		while (index > 1 && heap[this.parent(index)].getPriority() < heap[index].getPriority()) {
+//			Task tmpTask = heap[index];
+//			Task tmpParentTask = heap[this.parent(index)];
+//			heap[index] = tmpParentTask;
+//			heap[this.parent(index)] = tmpTask;
+//		}
+//
+//		index = this.parent(index);
+//
+//		if (index > 1) {
+//			if (x.compareTo(heap[this.parent(index)]) < 0) {
+//				throw new HeapException("new key is smaller so not valid ");
+//			} else {
+//				x.setPriority(newPriority);
+//
+//			}
+//
+//		}
+//
+//	}
 
 	/**
 	 * Method that returns true when heap is empty, otherwise false

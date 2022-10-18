@@ -98,7 +98,6 @@ public class Task implements TaskInterface, Comparable<Task> {
 	 */
 	public int compareTo(Task task) {
 
-//		System.out.println("Task is " + task);
 		if (this.getPriority() < task.getPriority()) {
 			return -1;
 		} else if (this.getPriority() > task.getPriority()) {
