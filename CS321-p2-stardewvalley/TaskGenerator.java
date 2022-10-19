@@ -79,7 +79,7 @@ public class TaskGenerator implements TaskGeneratorInterface {
 		if (unluckyProbability <= taskType.getPassingOutProbability()) {
 			if ((unluckyProbability <= taskType.getDyingProbabilityProbability())
 					&& (taskType == Task.TaskType.MINING)) {
-				currentEnergyStorage = (int) (currentEnergyStorage * (.25));
+				currentEnergyStorage = (int) (currentEnergyStorage / 4);
 				task.setPriority(0);
 				return 2;
 				

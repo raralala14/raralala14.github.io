@@ -12,6 +12,12 @@ public class Task implements TaskInterface, Comparable<Task> {
 	private TaskInterface.TaskType theTaskType;
 	
 
+	public Task(TaskInterface.TaskType theTaskType, int priorityLevel, int hourCreated2, String taskDescription) {
+		setPriority(priorityLevel);
+		setHourCreated(hourCreated2);
+		setTaskDescription(taskDescription);
+		this.theTaskType = theTaskType;
+	}
 	public Task(int hourCreated, TaskInterface.TaskType theTaskType, String taskDescription ) {
 		waitingTime = priorityLevel = 0;
 		this.hourCreated = hourCreated;
