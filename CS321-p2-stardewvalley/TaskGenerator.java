@@ -25,6 +25,9 @@ public class TaskGenerator implements TaskGeneratorInterface {
 	}
 
 	@Override
+	/**
+	 * Returns the new task object
+	 */
 	public Task getNewTask(int hourCreated, TaskInterface.TaskType taskType, String taskDescription) {
 		
 		return new Task(hourCreated, taskType, taskDescription);
@@ -34,12 +37,18 @@ public class TaskGenerator implements TaskGeneratorInterface {
 	}
 
 	@Override
+	/**
+	 * Decrements the energy storage 
+	 */
 	public void decrementEnergyStorage(TaskInterface.TaskType taskType) {
 
 		currentEnergyStorage = currentEnergyStorage - taskType.getEnergyPerHour();
 	}
 
 	@Override
+	/**
+	 * Resets the current energy storage 
+	 */
 	public void resetCurrentEnergyStorage() {
 		currentEnergyStorage = 200;
 

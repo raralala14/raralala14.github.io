@@ -13,9 +13,6 @@ public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface  
 	public MyPriorityQueue () {
 		super();
 	}
-//	public MyPriorityQueue (Task [] queue) {
-//		super(queue);
-//	}
 
 	public void enqueue(Object task) {
 
