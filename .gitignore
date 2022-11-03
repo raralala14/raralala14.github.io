@@ -2,4 +2,6 @@
 .classpath
 .project
 *.class
-
+out*
+.settings
+.DS_Store
