@@ -8,4 +8,9 @@
 public class DoubleHashing extends Hashtable {
 
     // h2(key) = 1 + positiveMod (key.hashCode(), tablesize - 2);
+    public DoubleHashing (int tableSize){
+        super(tableSize);
+
+        System.out.println("        Using Double Hashing");
+    }
 }

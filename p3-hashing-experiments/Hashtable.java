@@ -5,13 +5,24 @@
  *  would only have the functionality that is specific to the
  *  subclasses.
  */
-public class Hashtable {
+public abstract class  Hashtable {
+
+    Hashtable obj[];
+    // TODO
+    // change obj length
+    public Hashtable (int tableSize){
+        Hashtable obj[] = new Hashtable[tableSize];
+
+    }
 
     protected int positiveMod (int dividend, int divisor) {
         int quotient = dividend % divisor;
         if (quotient < 0)
             quotient += divisor;
         return quotient;
+    }
+    private void put(Object key){
+
     }
 
 }

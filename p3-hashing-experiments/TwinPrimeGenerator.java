@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Provides a static method generateTwinPrime(int min, int max)
  * that generates a value for the HashTable
@@ -12,7 +14,36 @@
  */
 public class TwinPrimeGenerator {
 
-    public static int generateTwinPrime(int min, int max){
-    return 1;
+
+    static int generateTwinPrime(int n1, int n2) {
+
+        int from = n1, to = n2, i, twinPrimeNumber = 0;
+        boolean[] a = new boolean[to + 1];
+        Arrays.fill(a, true);
+
+        // 0 and 1 are not prime
+        a[0] = false;
+        a[1] = false;
+        for (i = 2; i <= Math.sqrt(to); i++) {
+            if (a[i]) {
+                for (int j = i * i; j <= to; j += i) {
+                    a[j] = false;
+                }
+            }
+        }
+        for (int count = n1; count <= n2; ++count) {
+           // System.out.println("i = " + count + " " + a[count] + " " + a[count + 2]);
+            if (a[count] && a[count + 2]) {
+                return count + 2;
+            }
+        }
+
+        return 0;
     }
+
+
 }
+
+
+
+
